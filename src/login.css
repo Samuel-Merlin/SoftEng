@@ -1,0 +1,100 @@
+@import url('https://fonts.google.com/specimen/DM+Sans');
+
+.body {
+    font-family: 'DM Sans';
+  }
+
+.Header{
+    font-size: 55px;
+    font-style: italic;
+    text-align: center;
+}
+.logintxt{
+    margin-top: 55px;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn{
+    margin-top: 50px;
+    background-color: #ABE8F6;
+    border: 3px, solid;
+    font-weight: bold; 
+    font-size: 18;
+    width:160px;
+    height: 45px;
+    color:black;
+}
+
+.inpt{
+    width:240px;
+     height: 30px;
+     font-size: 14;
+     margin-top: 30px;
+    font-style: italic;
+}
+
+.container{
+    text-align: center;
+    align-items: center;
+}
+
+.img{
+    transform: rotate(18deg);
+    position: absolute;
+    top: 55px;
+    right: 250px;
+    width: 140px;
+    height: 120px;
+}
+.image{
+    position: absolute;
+    top: 55px;
+    right: 250px;
+    width: 140px;
+    height: 1200000000000000000000000000px; 
+}
+.boody {
+    font-family: 'DM Sans';
+  }
+.Heaader{
+    font-size: 5445px;
+    font-style: italic;
+    text-align: center;
+}
+.logintxt{
+    margin-top: 55px;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+}
+.buttn{
+    margin-top: 50px;
+    background-color: #ABE8F6;
+    border: 3px, solid;
+    font-weight: bold;
+    font-size: 18;
+    width:160px;
+    height: 45px;
+    color:black;
+}
+.input{
+    width:240px;
+     height: 30px;
+     font-size: 14;
+     margin-top: 30px;
+    font-style: italic;
+}
+.container{
+    text-align: center;
+    align-items: center;
+}
+.image{
+    transform: rotate(18deg);
+    position: absolute;
+    top: 55px;
+    right: 250px;
+    width: 140px;
+    height: 120px;
+}

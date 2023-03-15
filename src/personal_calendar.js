@@ -3,9 +3,10 @@ import { Calendar } from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import './JBstyles.css';
 import halfLogo from './Images/halfLogo.png';
-
+import { NavLink, useNavigate } from 'react-router-dom'
 
 export default function CalendarTime(){
+  const navigate = useNavigate();
  const [date, setDate] = useState(new Date());
  const [selectedDate, setSelectedDate] = useState(new Date());
  const [events, setEvents] = useState([]);
@@ -65,7 +66,7 @@ export default function CalendarTime(){
      </header>
      <br></br>
      <div>
-       <button className="button right" onClick={() => alert('You clicked me!')}>
+       <button className="button right" onClick={() => navigate('/AddForm')}>
            <svg width="30" height="30" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                <rect x="13" y="0.5" width="4" height="30" rx="2" fill="#1B3848"/>
                <rect x="30" y="13.5" width="4" height="30" rx="2" transform="rotate(90 30 13.5)" fill="#1B3848"/>

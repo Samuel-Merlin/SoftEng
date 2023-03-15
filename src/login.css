@@ -49,37 +49,14 @@
     height: 220px;
 }
 
-.boody {
-    font-family: 'DM Sans';
-  }
-.Heaader{
-    font-size: 5445px;
-    font-style: italic;
-    text-align: center;
-}
 .logintxt{
     margin-top: 55px;
     font-size: 45px;
     font-weight: bold;
     text-align: center;
 }
-.buttn{
-    margin-top: 50px;
-    background-color: #ABE8F6;
-    border: 3px, solid;
-    font-weight: bold;
-    font-size: 18;
-    width:160px;
-    height: 45px;
-    color:black;
-}
-.input{
-    width:240px;
-     height: 30px;
-     font-size: 14;
-     margin-top: 30px;
-    font-style: italic;
-}
+
+
 .container{
     text-align: center;
     align-items: center;
@@ -104,4 +81,39 @@
     margin-top: 2%;
     margin-bottom: 2%;
     margin-left: 16%;
+}
+.formContainer{
+    margin-left:25%;
+}
+.Header2{
+    font-size: 52px;
+    margin-top: 4%;
+}
+.date{
+    margin-top: 2%;
+    font-size:25px;
+}
+.title{
+    margin-top: 2%;
+    font-size:25px;
+}
+.dateNtime{
+    height:28px;
+    width:320px;
+}
+.inputText{
+    height:28px;
+    width:320px;
+}
+.textArea{
+    width:320px;
+}
+.txtArea{
+    margin-top: 2%;
+}
+.byeuton{
+    margin-top: 4%;
+    height:56px;
+    width:56px;
+    background-color: aquamarine;
 }

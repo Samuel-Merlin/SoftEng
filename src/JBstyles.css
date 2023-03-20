@@ -13,21 +13,16 @@
 
 
 .header{
-
-
  height: 4rem;
 }
 .flexbox-item {
   width: auto;
    margin: 10px;
-  
 }
-
 
 .flexbox-item-1 {
 flex: 1;
  }
-
 
 .flexbox-item-2 {
  flex: 1;
@@ -36,39 +31,25 @@ flex: 1;
 
 .flexbox-item-3 {
    flex: 1;
-
-
-     
-
-
 }
+
 .button{
-
-
  padding-left: 40px;
  padding-right: 40px;
  font-size: 36px;   
  background-color: #e6ecef;
-
-
 }
 
 
 .right{
    position: absolute;
    right: 10%;
-
-
-
-
 }
 
 
 .mid{
  position: absolute;
  right: 40%;
-
-
 }
 
 

@@ -77,7 +77,19 @@ export default function CalendarTime(){
        <br /><br /><br />
      </div>
 
-
+     <div>
+       <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
+       <p className='text-center'>
+         <span className='bold'>Groups:</span> 
+         <label for="cars">Choose a car:</label>
+        <select name="cars" id="cars">
+            <optgroup label="Swedish Cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+            </optgroup>
+        </select>
+       </p>
+     </div>
      <div>
        <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
        <p className='text-center'>

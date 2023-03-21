@@ -1,10 +1,10 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { oAuthentication } from './firebase-config';
+import { auth } from './firebase-config';
 
 export async function fnLogin(sEmail, sPassword) {
     try {
         await signInWithEmailAndPassword(
-            oAuthentication, 
+            auth, 
             sEmail, 
             sPassword
         );
@@ -16,7 +16,7 @@ export async function fnLogin(sEmail, sPassword) {
 
 export async function fnLogout() {
     try {
-        await signOut(oAuthentication);
+        await signOut(auth);
     } catch (error) {
         console.error(error);
         return error;

@@ -1,5 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { oAuthentication } from './firebase-config';
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "@firebase/firestore";
 import { collection, getDocs, query, where, doc, getDoc, addDoc, Timestamp, updateDoc, deleteDoc} from "firebase/firestore";

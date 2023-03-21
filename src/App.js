@@ -18,6 +18,7 @@ import Login from './login';
 import HomeScreen from './Home_Screen_Design';
 import Calendar from './personal_calendar';
 import TaskDesign from './addTaskForm';
+import DBtest from './dbtest';
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/HomeScreenPage"  element={ <HomeScreen/> } />
           <Route path = "PersonalCalendar" element={<Calendar/>} />
           <Route path = 'AddForm' element={<TaskDesign/>} />
+          <Route path = 'DBtest' element={<DBtest/>} />
           {/* REACT ROUTER -- ADD YOUR PATH-NAME, AND THEN YOUR ELEMENT WICH IS THE FILE NAME FROM THE IMPORT */}
         </Routes>
     )

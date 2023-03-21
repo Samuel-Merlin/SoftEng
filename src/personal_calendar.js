@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Calendar } from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import './JBstyles.css';
 import halfLogo from './Images/halfLogo.png';
 import { NavLink, useNavigate } from 'react-router-dom'
-import { oFirestore } from './firebase-config';
-import {collection,getDocs} from 'firebase/firestore';
-
-
 
 export default function CalendarTime(){
-  const[fuel,setFuel]=useState([])
-  const abPath=collection(oFirestore,'fuel')
-  useEffect(()=>{
-    const DispData=async()=>{
-    const Data = await getDocs(abPath)
-    console.log(Data)
-    setFuel(data.docs.map((val)=>({...val.data(),id:val.id})))
-    }
-    DispData()
-  },[])
-
   const navigate = useNavigate();
  const [date, setDate] = useState(new Date());
  const [selectedDate, setSelectedDate] = useState(new Date());

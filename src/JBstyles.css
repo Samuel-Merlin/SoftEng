@@ -43,7 +43,7 @@ flex: 1;
 
 .right{
    position: absolute;
-   right: 10%;
+   right: 5%;
 }
 
 
@@ -61,12 +61,12 @@ flex: 1;
 
 .react-calendar {
    position: absolute;
-   right: 40px;
-   height: 70%;
-   width: 70%;
-   max-width: 80%;
+   right: 2%;
+   height: 85%;
+   width:   70%;
+ 
    background: white;
-   border: 1px solid #a0a096;
+   
    font-family: 'DM Sans';
    line-height: 1.125em;
  }

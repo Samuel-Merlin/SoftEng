@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Calendar } from "react-calendar";
-import 'react-calendar/dist/Calendar.css';
+
 import './JBstyles.css';
 import halfLogo from './Images/halfLogo.png';
 import { NavLink, useNavigate } from 'react-router-dom'
 
 export default function CalendarTime(){
+  
   const navigate = useNavigate();
  const [date, setDate] = useState(new Date());
  const [selectedDate, setSelectedDate] = useState(new Date());
@@ -76,10 +77,11 @@ export default function CalendarTime(){
        </button>
        <br /><br /><br />
      </div>
-
+     
 
      <div>
-       <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
+     <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
+       
        <p className='text-center'>
          <span className='bold'>Selected Date:</span> {date.toDateString()}<br />
          <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}</div>)}

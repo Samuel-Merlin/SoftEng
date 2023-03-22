@@ -17,6 +17,7 @@ import { Routes, Route, useNavigate  } from "react-router-dom";
 import Login from './login';
 import HomeScreen from './Home_Screen_Design';
 import Calendar from './personal_calendar';
+import GCalendar from './group_calendar';
 import TaskDesign from './addTaskForm';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={ <Login/>} />
           <Route path="/HomeScreenPage"  element={ <HomeScreen/> } />
           <Route path = "PersonalCalendar" element={<Calendar/>} />
+          <Route path = "GroupCalendar" element={<GCalendar/>} />
           <Route path = 'AddForm' element={<TaskDesign/>} />
           {/* REACT ROUTER -- ADD YOUR PATH-NAME, AND THEN YOUR ELEMENT WICH IS THE FILE NAME FROM THE IMPORT */}
         </Routes>

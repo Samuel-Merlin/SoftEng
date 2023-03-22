@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar } from "react-calendar";
-import 'react-calendar/dist/Calendar.css';
+
 import './JBstyles.css';
 import halfLogo from './Images/halfLogo.png';
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -76,22 +76,23 @@ export default function CalendarTime(){
        </button>
        <br /><br /><br />
      </div>
-aaaaa
+
      <div>
        <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
        <p className='text-center'>
-         <span className='bold'>Groups:</span> 
-         <label for="cars">Choose a car:</label>
-        <select name="cars" id="cars">
-            <optgroup label="Swedish Cars">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-            </optgroup>
-        </select>
+        <label for="GroupSelector">Select a group:   &nbsp; </label>
+          <select name="Groups" id="Groups">
+      
+            <option value="Group1">SoftEng</option>
+            <option value="Group2">GameDev</option>
+            <option value="Group3">Senior Project</option>
+            <option value="Group4">Operating systems</option>
+     
+          </select>
        </p>
      </div>
      <div>
-       <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
+       
        <p className='text-center'>
          <span className='bold'>Selected Date:</span> {date.toDateString()}<br />
          <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}</div>)}

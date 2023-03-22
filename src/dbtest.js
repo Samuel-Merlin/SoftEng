@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { oFirestore } from './firebase-config';
 import {collection,getDocs} from 'firebase/firestore';
+import moment from 'moment';
 // const[fuel,setFuel]=useState([])
 // const abPath=collection(oFirestore,'fuel')
 // useEffect(()=>{
@@ -34,7 +35,8 @@ return(
 <div>
 <ul>
 {wkGroups.map(wkGroup=> (
-  <li key={wkGroup.id}>{wkGroup.data.event_name}</li>
+  <li key={wkGroup.id}>{wkGroup.data.event_name}&nbsp;{ moment( wkGroup.data.event_timestamp.seconds * 1000 + wkGroup.data.event_timestamp.nanoseconds / 1000000 ).format("MMM Do YY, h:mm a")  }
+  </li>
 ))}
 </ul>
 </div>

@@ -15,7 +15,7 @@ Contributors:
     Sam Merlin 3/22/2023
 
 ===================================================================+*/
-export default function DBtest(){
+export default function DBtest(props){
     //these are objects used to pass in the data from the DB function, set is used also get is used
 const [PCals, setPCals] = useState([])
 const [GCals, setGCals] = useState([])
@@ -77,4 +77,5 @@ return(
 </div>
 )
 }
+
 //GCals

@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar } from "react-calendar";
-
+import { oFirestore } from './firebase-config';
 import './JBstyles.css';
+import { collection, getDocs } from 'firebase/firestore';
+import moment from 'moment';
+import DBtest from './dbtest.js';
 import halfLogo from './Images/halfLogo.png';
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function CalendarTime(){
+
+
+export default function CalendarTimeGC(props){
+  const [GCals, setGCals] = useState([])
   const navigate = useNavigate();
- const [date, setDate] = useState(new Date());
- const [selectedDate, setSelectedDate] = useState(new Date());
- const [events, setEvents] = useState([]);
- const numOfEvents = 3;
+  const [date, setDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [events, setEvents] = useState([]);
+  const numOfEvents = 3;
   const data = {
    '2023-03-10': ['First event'],
    '2023-03-15': ['Slides due','End of Sprint 2','Present'],
@@ -18,7 +24,26 @@ export default function CalendarTime(){
    '2023-04-08': ['4th day'],
    '2024-03-08': ['5th day'],
  };
+ 
+ useEffect(()=>{
+  getGroups2()
+},[])
+  //the second function, getGroups2, returns the events from GCEvents into the object GCals
+  //Objects in GCals will be GCal.data.event_name,  GCal.data.event_timstamp
+function getGroups2(){
+  const groupCollection = collection(oFirestore, 'GCEvents')
+  getDocs(groupCollection)
+   .then(Response=>{
+      const groups = Response.docs.map(doc=>({
+      data:doc.data(),
+      id:doc.id,
+}))
+      console.log(groups)
+      setGCals(groups)
+})
+  .catch(error => console.log(error.message))
 
+  
 
  const tileContent = ({ date, view }) => {
    if (view === 'month') {
@@ -80,7 +105,7 @@ export default function CalendarTime(){
      <div>
        <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
        <p className='text-center'>
-        <label for="GroupSelector">Select a group:   &nbsp; </label>
+        <label htmlFor="GroupSelector" >Select a group:   &nbsp; </label>
           <select name="Groups" id="Groups">
       
             <option value="Group1">SoftEng</option>
@@ -97,6 +122,17 @@ export default function CalendarTime(){
          <span className='bold'>Selected Date:</span> {date.toDateString()}<br />
          <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}</div>)}
        </p>
+        <p ><ul>
+    {GCals.map((GCal) => (
+      <li key={GCal.id}>
+        {GCal.data.event_name}&nbsp;
+        {moment(
+          GCal.data.event_timestamp.seconds * 1000 +
+            GCal.data.event_timestamp.nanoseconds / 1000000
+        ).format('MMM Do YY, h:mm a')}
+      </li>
+    ))}
+  </ul></p>
      </div>
    </div>
  );

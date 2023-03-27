@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Calendar } from "react-calendar";
-
 import './JBstyles.css';
 import halfLogo from './Images/halfLogo.png';
 import { NavLink, useNavigate } from 'react-router-dom'
 
-export default function CalendarTime(){
+export default function CalendarTimePC(){
   
   const navigate = useNavigate();
  const [date, setDate] = useState(new Date());

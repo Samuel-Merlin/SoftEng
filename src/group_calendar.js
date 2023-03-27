@@ -42,7 +42,7 @@ function getGroups2(){
       setGCals(groups)
 })
   .catch(error => console.log(error.message))
-
+}
   
 
  const tileContent = ({ date, view }) => {

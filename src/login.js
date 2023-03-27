@@ -14,29 +14,29 @@ Contributors:
 import React, {useState} from 'react'
 import CalApp from './Images/logo.png';
 import './login.css';
-import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { auth } from './firebase-config';
-import { NavLink, useNavigate } from 'react-router-dom'
+import {fnLogin} from './loginFunction'
+import {useNavigate } from 'react-router-dom'
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const Navigate=useNavigate()
      
-  const onLogin = (e) => {
-      e.preventDefault();
-      signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          navigate("/HomeScreenPage")
-          console.log(user);
-      })
-      .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode, errorMessage)
-      });}
+  const fnHandleLogin = async () => {
+    const error = await fnLogin(email, password);
+    
+    
+    if(error) {
+      console.log(error.message);
+      const Message = document.getElementById('Message');
+      Message.innerHTML = "Invalid email, please enter an associated email or contact administration!";
+    }
+    else{
+      
+      Navigate('/HomeScreenPage')
+    }
+  }
 
       return(
         <div className='body'>
@@ -65,8 +65,9 @@ function Login() {
                                     className = "inpt"/>
                         </div>
                         <div>
-                            <button className = 'btn' onClick={onLogin} >Log in</button>
+                            <button className = 'btn' onClick={fnHandleLogin} >Log in</button>
                         </div>
+                        <p id ='Message'></p>
                   </div>
               </div>
           </div>

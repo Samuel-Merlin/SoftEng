@@ -1,0 +1,35 @@
+.button-container{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+button{
+    cursor: pointer;
+    font-size: 1.2rem;
+    height: 2.5rem;
+    border:none;
+    border-radius: 10px;
+    color:aquamarine;
+    background-color: blue;
+    outline:none;
+    box-shadow: 0 0.3rem rgba(2, 232, 248, 0.7);
+}
+button:hover{
+    filter:brightness(110%);
+}
+button:active{
+    transform:translate(0,0.3rem);
+    box-shadow: 0 0.1rem rgba(3, 203, 238, 0.7);
+}
+.byeuton1{
+    margin-top: 4%;
+    height:56px;
+    width:56px;
+    background-color: aquamarine;
+}
+.byeuton2{
+    margin-top: 4%;
+    height:56px;
+    width:56px;
+    background-color: aquamarine;
+}

@@ -58,8 +58,6 @@ function getGroups2(){
 })
     .catch(error => console.log(error.message))
 }
-
-
 return(
     <div>
 {/* <div>here, i used a .map function to list out every event_name and event_timestamp that exists within the PCal collection in fire base

@@ -4,7 +4,6 @@ import { oFirestore } from './firebase-config';
 import './JBstyles.css';
 import { collection, getDocs } from 'firebase/firestore';
 import moment from 'moment';
-import DBtest from './dbtest.js';
 import halfLogo from './Images/halfLogo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 

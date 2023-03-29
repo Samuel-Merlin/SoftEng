@@ -32,7 +32,7 @@ function Home_Screen()
                       </div>
                       
                     <div className='link'>  
-                      <Link to='/GroupCalnedar'>Group Calendar</Link>
+                      <Link to='/GroupCalendar'>Group Calendar</Link>
                 </div>
               </div>
         </div>

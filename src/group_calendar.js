@@ -129,7 +129,7 @@ function getGroups2(){
         {moment(
           GCal.data.event_timestamp.seconds * 1000 +
             GCal.data.event_timestamp.nanoseconds / 1000000
-        ).format('YYYY-MM-DD, h:mm a')}
+        ).format('YYYY-MM-DD')}
       </li>
     ))}
   </ul></p>

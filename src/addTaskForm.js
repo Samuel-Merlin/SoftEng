@@ -7,6 +7,7 @@ function TaskDesign()
 {
   const navigate = useNavigate();
 return(
+  
   <div className='body'>
             <div className='Header'> MyCalendarTime.com </div>
         <div className='formContainer'>
@@ -18,7 +19,7 @@ return(
         <input value='value' className="dateNtime" type="datetime-local" id="add an ID"></input>
         </div>
 
-        <div className='title'> Title and       Description </div>
+        <div className='title'> Title and Description </div>
         <div>
         <input className='inputText'
           placeholder="Add text here"
@@ -33,7 +34,9 @@ return(
           className='textArea'
         />
         </div>
-        <button className='byeuton' onClick={() => navigate('/PersonalCalendar')}> Go Back</button>
+        <button className='byeuton1' onClick={() => navigate('/PersonalCalendar')}> Go Back</button>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <button className='byeuton2' onClick={() => navigate('/PersonalCalendar')}> Submit</button>
                     </div>
                     </div>
              </div>

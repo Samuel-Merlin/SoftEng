@@ -18,7 +18,7 @@ return(
         <input value='value' className="dateNtime" type="datetime-local" id="add an ID"></input>
         </div>
 
-        <div className='title'> Title and Description </div>
+        <div className='title'> Title and       Description </div>
         <div>
         <input className='inputText'
           placeholder="Add text here"

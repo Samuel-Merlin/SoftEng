@@ -1,41 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar } from "react-calendar";
+import { oFirestore } from './firebase-config';
 import './JBstyles.css';
+import { collection, getDocs } from 'firebase/firestore';
+import moment from 'moment';
 import halfLogo from './Images/halfLogo.png';
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function CalendarTimePC(){
-  
+export default function CalendarTimeGC(props) {
+  const [GCals, setGCals] = useState([]);
   const navigate = useNavigate();
- const [date, setDate] = useState(new Date());
- const [selectedDate, setSelectedDate] = useState(new Date());
- const [events, setEvents] = useState([]);
- const numOfEvents = 3;
-  const data = {
-   '2023-03-10': ['First event'],
-   '2023-03-15': ['Slides due','End of Sprint 2','Present'],
-   '2023-03-22': ['3rd day'],
-   '2023-04-08': ['4th day'],
-   '2024-03-08': ['5th day'],
- };
+  const [date, setDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [events, setEvents] = useState([]);
+  const [gcalEvents, setGcalEvents] = useState({
+  });
+
+  useEffect(() => {
+    getGroups8();
+  }, []);
+
+  function getGroups8() {
+    const groupCollection = collection(oFirestore, 'GCEvents')
+    getDocs(groupCollection)
+      .then(Response => {
+        const groups = Response.docs.map(doc => ({
+          data: doc.data(),
+          id: doc.id,
+        }))
 
 
- const tileContent = ({ date, view }) => {
-   if (view === 'month') {
-     const dateStr = date.toISOString().slice(0, 10);
-     const eventList = data[dateStr] || [];
-     return <p>Events: {eventList.length}</p>;
-   }
- };
+        console.log(groups)
+        setGcalEvents(prevEvents => {
+          const newEvents = { ...prevEvents };
+        
+          groups.forEach(group => {
+            const dateStr = moment(group.data.event_timestamp.toDate()).format('YYYY-MM-DD');
+            if (!newEvents[dateStr]) {
+              newEvents[dateStr] = [group.data.event_name];
+            } else if (!newEvents[dateStr].includes(group.data.event_name)) {
+              newEvents[dateStr] = [...newEvents[dateStr], group.data.event_name];
+            }
+          });
+        
+          return newEvents;
+        });
+      })
+      .catch(error => console.log(error.message));
+  }
 
+  const tileContent = ({ date, view }) => {
+    if (view === 'month') {
+      const dateStr = date.toISOString().slice(0, 10);
+      const eventList = gcalEvents[dateStr] || [];
+      return <p>Events: {eventList.length}</p>;
+    }
+  };
 
- const onClickDay = (value) => {
-   setSelectedDate(value);
-   const dateStr = value.toISOString().slice(0, 10);
-   const eventList = data[dateStr] || [];
-   setEvents(eventList);
- };
-
+  const onClickDay = (value) => {
+    setSelectedDate(value);
+    const dateStr = value.toISOString().slice(0, 10);
+    const eventList = gcalEvents[dateStr] || [];
+    setEvents(eventList);
+  };
 
  return (
    <div>
@@ -45,7 +72,7 @@ export default function CalendarTimePC(){
          <br></br>
           </div>
          <div className="flexbox-item flexbox-item-2">
-               <span><button className="button mid" onClick={() => navigate('/PersonalCalendar')}>
+               <span><button className="button mid" onClick={() =>  navigate('/PersonalCalendar')}>
                    <svg width="36" height="40" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                        <path d="M18.1813 18.1797C19.1939 18.1797 20.1651 18.582 20.8811 19.298C21.5972 20.0141 21.9995 20.9852 21.9995 21.9979C21.9995 23.0105 21.5972 23.9817 20.8811 24.6977C20.1651 25.4138 19.1939 25.8161 18.1813 25.8161C17.1686 25.8161 16.1975 25.4138 15.4814 24.6977C14.7654 23.9817 14.3631 23.0105 14.3631 21.9979C14.3631 20.9852 14.7654 20.0141 15.4814 19.298C16.1975 18.582 17.1686 18.1797 18.1813 18.1797ZM18.1813 27.7251C22.4004 27.7251 25.8176 29.4338 25.8176 31.5433V33.4524H10.5449V31.5433C10.5449 29.4338 13.9622 27.7251 18.1813 27.7251Z" fill="#1B3848"/>
                        <path d="M4 40C2.9 40 1.958 39.6087 1.174 38.826C0.391333 38.042 0 37.1 0 36V8C0 6.9 0.391333 5.95867 1.174 5.176C1.958 4.392 2.9 4 4 4H6V0H10V4H26V0H30V4H32C33.1 4 34.042 4.392 34.826 5.176C35.6087 5.95867 36 6.9 36 8V36C36 37.1 35.6087 38.042 34.826 38.826C34.042 39.6087 33.1 40 32 40H4ZM4 36H32V16H4V36Z" fill="#1B3848"/>
@@ -76,20 +103,29 @@ export default function CalendarTimePC(){
        </button>
        <br /><br /><br />
      </div>
-     
 
      <div>
-     <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
+       <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
+       <p className='text-center'>
+        <label htmlFor="GroupSelector" >Select a group:   &nbsp; </label>
+          <select name="Groups" id="Groups">
+      
+            <option value="Group1">SoftEng</option>
+            <option value="Group2">GameDev</option>
+            <option value="Group3">Senior Project</option>
+            <option value="Group4">Operating systems</option>
+     
+          </select>
+       </p>
+     </div>
+     <div>
        
        <p className='text-center'>
          <span className='bold'>Selected Date:</span> {date.toDateString()}<br />
          <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}</div>)}
        </p>
+       
      </div>
    </div>
  );
 };
-
-
-
-

@@ -13,21 +13,16 @@
 
 
 .header{
-
-
  height: 4rem;
 }
 .flexbox-item {
   width: auto;
    margin: 10px;
-  
 }
-
 
 .flexbox-item-1 {
 flex: 1;
  }
-
 
 .flexbox-item-2 {
  flex: 1;
@@ -36,39 +31,25 @@ flex: 1;
 
 .flexbox-item-3 {
    flex: 1;
-
-
-     
-
-
 }
+
 .button{
-
-
  padding-left: 40px;
  padding-right: 40px;
  font-size: 36px;   
  background-color: #e6ecef;
-
-
 }
 
 
 .right{
    position: absolute;
-   right: 10%;
-
-
-
-
+   right: 5%;
 }
 
 
 .mid{
  position: absolute;
  right: 40%;
-
-
 }
 
 
@@ -80,10 +61,10 @@ flex: 1;
 
 .react-calendar {
    position: absolute;
-   right: 40px;
-   height: 70%;
-   width: 70%;
-   max-width: 80%;
+   right: 2%;
+   height: 67.35%;
+   width:   70%;
+ 
    background: white;
    border: 1px solid #a0a096;
    font-family: 'DM Sans';
@@ -174,9 +155,9 @@ flex: 1;
   .react-calendar__tile {
    max-width: 100%;
    padding: 10px 6.6667px;
-   background: none;
+   background: white;
    text-align: flex-start;
-   line-height: 2rem;
+   line-height: 1rem;
  }
   .react-calendar__tile:disabled {
    background-color: #f0f0f0;

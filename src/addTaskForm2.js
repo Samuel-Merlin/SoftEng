@@ -17,7 +17,7 @@ function TaskDesign()
     }
     else{
     try{
-    const newDocRef = await addDoc(collection(oFirestore, 'GCEvents'),{
+    const newDocRef = await addDoc(collection(oFirestore, 'PCEvents'),{
         event_name: evName,
         event_timestamp: new Date(evTimestamp)
     });
@@ -66,7 +66,7 @@ return(
           className='textArea'
         />
         </div>
-        <button className='byeuton1' onClick={() => navigate('/PersonalCalendar')}> Go Back</button>
+        <button className='byeuton1' onClick={() => navigate('/GroupCalendar')}> Go Back</button>
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
         <button className='byeuton2' onClick={handleSubmit}> Submit</button>
                     </div>

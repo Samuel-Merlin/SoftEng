@@ -1,40 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar } from "react-calendar";
+import { oFirestore } from './firebase-config';
 import './JBstyles.css';
+import { collection, getDocs } from 'firebase/firestore';
+import moment from 'moment';
 import halfLogo from './Images/halfLogo.png';
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function CalendarTimePC(){
-  
+export default function CalendarTimePC(props) {
+  const [PCals, setPCals] = useState([]);
   const navigate = useNavigate();
- const [date, setDate] = useState(new Date());
- const [selectedDate, setSelectedDate] = useState(new Date());
- const [events, setEvents] = useState([]);
- const numOfEvents = 3;
-  const data = {
-   '2023-03-10': ['First event'],
-   '2023-03-15': ['Slides due','End of Sprint 2','Present'],
-   '2023-03-22': ['3rd day'],
-   '2023-04-08': ['4th day'],
-   '2024-03-08': ['5th day'],
- };
+  const [date, setDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [events, setEvents] = useState([]);
+  const [pcalEvents, setPcalEvents] = useState({
+  });
+
+  useEffect(() => {
+    getGroups8();
+  }, []);
+
+  function getGroups8() {
+    const groupCollection = collection(oFirestore, 'PCEvents')
+    getDocs(groupCollection)
+      .then(Response => {
+        const groups = Response.docs.map(doc => ({
+          data: doc.data(),
+          id: doc.id,
+        }))
 
 
- const tileContent = ({ date, view }) => {
-   if (view === 'month') {
-     const dateStr = date.toISOString().slice(0, 10);
-     const eventList = data[dateStr] || [];
-     return <p>Events: {eventList.length}</p>;
-   }
- };
+        console.log(groups)
+        setPcalEvents(prevEvents => {
+          const newEvents = { ...prevEvents };
+        
+          groups.forEach(group => {
+            const dateStr = moment(group.data.event_timestamp.toDate()).format('YYYY-MM-DD');
+            if (!newEvents[dateStr]) {
+              newEvents[dateStr] = [group.data.event_name];
+            } else if (!newEvents[dateStr].includes(group.data.event_name)) {
+              newEvents[dateStr] = [...newEvents[dateStr], group.data.event_name];
+            }
+          });
+        
+          return newEvents;
+        });
+      })
+      .catch(error => console.log(error.message));
+  }
 
+  const tileContent = ({ date, view }) => {
+    if (view === 'month') {
+      const dateStr = date.toISOString().slice(0, 10);
+      const eventList = pcalEvents[dateStr] || [];
+      return <p>Events: {eventList.length}</p>;
+    }
+  };
 
- const onClickDay = (value) => {
-   setSelectedDate(value);
-   const dateStr = value.toISOString().slice(0, 10);
-   const eventList = data[dateStr] || [];
-   setEvents(eventList);
- };
+  const onClickDay = (value) => {
+    setSelectedDate(value);
+    const dateStr = value.toISOString().slice(0, 10);
+    const eventList = pcalEvents[dateStr] || [];
+    setEvents(eventList);
+  };
 
 
  return (

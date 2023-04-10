@@ -10,7 +10,6 @@ export async function fnLogin(sEmail, sPassword) {
         );
     } catch (error) {
         console.error(error);
-        return error;
     }
 }
 
@@ -19,6 +18,5 @@ export async function fnLogout() {
         await signOut(auth);
     } catch (error) {
         console.error(error);
-        return error;
     }
 };

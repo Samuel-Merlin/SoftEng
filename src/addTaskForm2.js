@@ -5,7 +5,7 @@ import {collection,getDocs,addDoc} from 'firebase/firestore';
 import moment from 'moment';
 import { NavLink, useNavigate, Link } from 'react-router-dom'
 
-function TaskDesign()
+function TaskDesign2()
 {
   const navigate = useNavigate();
   const [evName, setevName] = useState([])
@@ -71,7 +71,9 @@ return(
         <button className='byeuton2' onClick={handleSubmit}> Submit</button>
                     </div>
                     </div>
-                    <p id ='Message'></p>
+                    <div className = 'inerhtml'>
+                    <p className = 'innerhtml' id ='Message'></p>
+                    </div>
       </div>
 );}
-export default TaskDesign;
+export default TaskDesign2;

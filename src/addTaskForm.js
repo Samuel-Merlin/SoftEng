@@ -71,7 +71,9 @@ return(
         <button className='byeuton2' onClick={handleSubmit}> Submit</button>
                     </div>
                     </div>
-                    <p id ='Message'></p>
+                    <div clasName = 'inerhtml'>
+                    <p className = 'innerhtml' id ='Message'></p>
+                    </div>
       </div>
 );}
 export default TaskDesign;

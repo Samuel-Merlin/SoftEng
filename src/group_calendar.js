@@ -117,7 +117,7 @@ Contributor Sam Merlin
      </header>
      <br></br>
      <div>
-       <button className="button right" onClick={() => navigate('/AddForm')}>
+       <button className="button right" onClick={() => navigate('/AddForm2')}>
            <svg width="30" height="30" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                <rect x="13" y="0.5" width="4" height="30" rx="2" fill="#1B3848"/>
                <rect x="30" y="13.5" width="4" height="30" rx="2" transform="rotate(90 30 13.5)" fill="#1B3848"/>

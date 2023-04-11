@@ -19,6 +19,7 @@ import HomeScreen from './Home_Screen_Design';
 import Calendar from './personal_calendar';
 import GCalendar from './group_calendar';
 import TaskDesign from './addTaskForm';
+import TaskDesign2 from './addTaskForm2';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path = "PersonalCalendar" element={<Calendar/>} />
           <Route path = "GroupCalendar" element={<GCalendar/>} />
           <Route path = 'AddForm' element={<TaskDesign/>} />
+          <Route path = 'AddForm2' element={<TaskDesign2/>} />
           
           {/* REACT ROUTER -- ADD YOUR PATH-NAME, AND THEN YOUR ELEMENT WICH IS THE FILE NAME FROM THE IMPORT */}
         </Routes>

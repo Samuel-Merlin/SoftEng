@@ -5,7 +5,7 @@ import {collection,getDocs,addDoc} from 'firebase/firestore';
 import moment from 'moment';
 import { NavLink, useNavigate, Link } from 'react-router-dom'
 
-function TaskDesign()
+function TaskDesign2()
 {
   const navigate = useNavigate();
   const [evName, setevName] = useState([])
@@ -17,7 +17,7 @@ function TaskDesign()
     }
     else{
     try{
-    const newDocRef = await addDoc(collection(oFirestore, 'GCEvents'),{
+    const newDocRef = await addDoc(collection(oFirestore, 'PCEvents'),{
         event_name: evName,
         event_timestamp: new Date(evTimestamp)
     });
@@ -66,14 +66,14 @@ return(
           className='textArea'
         />
         </div>
-        <button className='byeuton1' onClick={() => navigate('/PersonalCalendar')}> Go Back</button>
+        <button className='byeuton1' onClick={() => navigate('/GroupCalendar')}> Go Back</button>
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
         <button className='byeuton2' onClick={handleSubmit}> Submit</button>
                     </div>
                     </div>
-                    <div clasName = 'inerhtml'>
+                    <div className = 'inerhtml'>
                     <p className = 'innerhtml' id ='Message'></p>
                     </div>
       </div>
 );}
-export default TaskDesign;
+export default TaskDesign2;

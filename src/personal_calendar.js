@@ -1,3 +1,16 @@
+/*+===================================================================
+File: personal_calendar.js
+
+Summary: personal_calendar.js is the file which builds and populates the group calendar
+
+Exported Data Structures: None
+
+Exported Functions: CalendarTimePC
+
+Contributors:
+    Justin Bruno 4/10/2023
+
+===================================================================+*/
 import React, { useState, useEffect } from 'react';
 import { Calendar } from "react-calendar";
 import { oFirestore } from './firebase-config';
@@ -17,10 +30,18 @@ export default function CalendarTimePC(props) {
   });
 
   useEffect(() => {
-    getGroups8();
+    getGroups1();
   }, []);
 
-  function getGroups8() {
+
+  /*F+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Function: getGroups1
+Summary: Recieves the personal calendar events from firebase
+Args: none
+Returns: groups - an event map 
+Contributor Sam Merlin
+-------------------------------------------------------------------F*/
+  function getGroups1() {
     const groupCollection = collection(oFirestore, 'PCEvents')
     getDocs(groupCollection)
       .then(Response => {

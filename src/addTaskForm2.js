@@ -17,7 +17,7 @@ function TaskDesign2()
     }
     else{
     try{
-    const newDocRef = await addDoc(collection(oFirestore, 'PCEvents'),{
+    const newDocRef = await addDoc(collection(oFirestore, 'GCEvents'),{
         event_name: evName,
         event_timestamp: new Date(evTimestamp)
     });

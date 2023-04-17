@@ -10,6 +10,7 @@ function TaskDesign2()
   const navigate = useNavigate();
   const [evName, setevName] = useState([])
   const [evTimestamp, setevTimestamp] = useState([])
+  const [evDesc, setevDesc] = useState([])
   async function handleSubmit(){
     const Message = document.getElementById('Message');
     if (evName =='' || evTimestamp == ''){
@@ -19,12 +20,14 @@ function TaskDesign2()
     try{
     const newDocRef = await addDoc(collection(oFirestore, 'GCEvents'),{
         event_name: evName,
-        event_timestamp: new Date(evTimestamp)
+        event_timestamp: new Date(evTimestamp),
+        event_description: evDesc
     });
     const Message = document.getElementById('Message');
       Message.innerHTML = "Event succesfully created";
       document.querySelector(".dateNtime").value = "";
       document.querySelector(".inputText").value = "";
+      document.getElementById("output").value = "";
       setevName("");
       setevTimestamp("");
     }
@@ -57,13 +60,16 @@ return(
             setevName(event.target.value);}}
         />
       </div>
-      <div className='txtArea'>
+      <div className='textBox'>
          <textarea
           name="notes"
+          id='output'
           rows={6}
           input
           placeholder="Add text here"
           className='textArea'
+          onChange={(event) => {
+            setevDesc(event.target.value);}}
         />
         </div>
         <button className='byeuton1' onClick={() => navigate('/GroupCalendar')}> Go Back</button>

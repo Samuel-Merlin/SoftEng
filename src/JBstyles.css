@@ -141,10 +141,15 @@ flex: 1;
    text-transform: uppercase;
    font-weight: bold;
    font-size: 2em;
+   
+
  }
   .react-calendar__month-view__weekdays__weekday {
    padding: 0.5em;
  }
+
+
+
   .react-calendar__month-view__weekNumbers .react-calendar__tile {
    display: flex;
    align-items: flex-start;
@@ -222,4 +227,6 @@ font-size: 1.7em;
 
 
 }
+
+
 

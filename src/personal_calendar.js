@@ -128,7 +128,7 @@ Contributor Sam Merlin
      
 
      <div>
-     <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
+     <Calendar onChange={setDate} calendarType="US" value={date} onClickDay={onClickDay} tileContent={tileContent} />
        
        <p className='text-center'>
          <span className='bold'>Selected Date:</span> {date.toDateString()}<br />

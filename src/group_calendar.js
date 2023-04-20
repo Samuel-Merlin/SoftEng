@@ -7,7 +7,8 @@ Exported Data Structures: None
 
 Exported Functions: CalendarTimeGC
 
-Contributors:
+Contributors:;]
+
     Justin Bruno 4/10/2023
 
 ===================================================================+*/
@@ -129,7 +130,7 @@ Contributor Sam Merlin
      </div>
 
      <div>
-       <Calendar onChange={setDate} value={date} onClickDay={onClickDay} tileContent={tileContent} />
+       <Calendar onChange={setDate} calendarType="US" value={date} onClickDay={onClickDay} tileContent={tileContent} />
        <p className='text-center'>
         <label htmlFor="GroupSelector" >Select a group:   &nbsp; </label>
           <select name="Groups" id="Groups">

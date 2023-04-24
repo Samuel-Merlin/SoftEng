@@ -76,6 +76,9 @@ Contributor Sam Merlin
     if (view === 'month') {
       const dateStr = date.toISOString().slice(0, 10);
       const eventList = gcalEvents[dateStr] || [];
+      if(eventList.length ==0){
+        return <p>&nbsp;</p>
+      }
       return <p>Events: {eventList.length}</p>;
     }
   };
@@ -86,6 +89,8 @@ Contributor Sam Merlin
     const eventList = gcalEvents[dateStr] || [];
     setEvents(eventList);
   };
+
+ 
 
  return (
   
@@ -151,6 +156,7 @@ Contributor Sam Merlin
        </p>
        <p className='text-center'>
        <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}</div>)}
+       
        </p>
      </div>
    </div>

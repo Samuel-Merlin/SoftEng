@@ -74,7 +74,11 @@ Contributor Sam Merlin
     if (view === 'month') {
       const dateStr = date.toISOString().slice(0, 10);
       const eventList = pcalEvents[dateStr] || [];
+      if(eventList.length ==0){
+        return <p>&nbsp;</p>
+      }
       return <p>Events: {eventList.length}</p>;
+      
     }
   };
 

@@ -9,12 +9,18 @@ test("...",  () => {
         </Router>
         );
         jest.setTimeout(30000)
-    const link = screen.getByRole('link')
+    const link = screen.getByText('Personal Calendar')
     fireEvent.click(link)
-    const text2 = screen.getByText("Event:")
-    expect(text2).toBeInTheDocument;
-    const text3 = screen.getByText("Group Calendar")
-    fireEvent.click(text)
-    const text4 = screen.getByText("Events:")
-    expect(text4).toBeInTheDocument;
+    expect(window.location.href).toBe("http://localhost/PersonalCalendar");
     });
+    test("....",  () => {
+        render(
+            <Router>
+            <Home_Screen/>
+            </Router>
+            );
+            jest.setTimeout(30000)
+        const link = screen.getByText('Group Calendar')
+        fireEvent.click(link)
+        expect(window.location.href).toBe("http://localhost/GroupCalendar");
+        });

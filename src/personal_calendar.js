@@ -89,6 +89,38 @@ Contributor Sam Merlin
     setEvents(eventList);
   };
 
+  // const Popup = ({ text }) => {
+  //   return (
+  //     <div className="popup">
+  //       <p>{text}</p>
+  //     </div>
+  //   );
+  // };
+  
+  // const TextWithPopup = ({ text, popupText }) => {
+  //   const [showPopup, setShowPopup] = useState(false);
+  
+  //   const handleMouseOver = () => {
+  //     setShowPopup(true);
+  //   };
+  
+  //   const handleMouseLeave = () => {
+  //     setShowPopup(false);
+  //   };
+  
+  //   return (
+  //     <div>
+  //       <span
+  //         className="text-with-popup"
+  //         onMouseOver={handleMouseOver}
+  //         onMouseLeave={handleMouseLeave}
+  //       >
+  //         {text}
+  //       </span>
+  //       {showPopup && <Popup text={popupText} />}
+  //     </div>
+  //   );
+  // };
 
  return (
    <div>
@@ -135,8 +167,10 @@ Contributor Sam Merlin
      <Calendar onChange={setDate} calendarType="US" value={date} onClickDay={onClickDay} tileContent={tileContent} />
        
        <p className='text-center'>
+        {/* <div>onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}</div> */}
          <span className='bold'>Selected Date:</span> {date.toDateString()}<br />
-         <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}</div>)}
+         <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}  </div>)}
        </p>
      </div>
    </div>

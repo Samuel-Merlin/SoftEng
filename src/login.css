@@ -10,14 +10,16 @@
     text-align: center;
 }
 .logintxt{
-    margin-top: 55px;
+    margin-top:4%;
+    margin-left:34%;
     font-size: 45px;
     font-weight: bold;
     text-align: center;
 }
 
 .btn{
-    margin-top: 50px;
+    margin-top:4%;
+    margin-right:48%;
     background-color: #ABE8F6;
     border: 3px, solid;
     font-weight: bold; 
@@ -35,29 +37,16 @@
     font-style: italic;
 }
 
-.container{
-    text-align: center;
-    align-items: center;
-}
-
 .img{
-
-    position: absolute;
-    top: 55px;
-    right: 300px;
+    margin-right: 14%;
+    float:right;
+    position:relative;
     width: 240px;
     height: 220px;
 }
 
-.logintxt{
-    margin-top: 55px;
-    font-size: 45px;
-    font-weight: bold;
-    text-align: center;
-}
-
-
 .container{
+    margin-left:34%;
     text-align: center;
     align-items: center;
 }
@@ -108,7 +97,8 @@
 .textArea{
     width:320px;
 }
-.txtArea{
+
+.textBox{
     margin-top: 2%;
 }
 .byeuton1{
@@ -122,4 +112,11 @@
     height:56px;
     width:76px;
     background-color: aquamarine;
+}
+.innerhtml{
+    text-align: center;
+    
+}
+.inHtml{
+    margin-right:48%;
 }

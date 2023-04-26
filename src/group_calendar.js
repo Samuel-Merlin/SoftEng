@@ -1,3 +1,17 @@
+/*+===================================================================
+File: group_calendar.js
+
+Summary: group_calendar.js is the file which builds and populates the group calendar
+
+Exported Data Structures: None
+
+Exported Functions: CalendarTimeGC
+
+Contributors:
+    Justin Bruno 4/10/2023
+
+===================================================================+*/
+
 import React, { useState, useEffect } from 'react';
 import { Calendar } from "react-calendar";
 import { oFirestore } from './firebase-config';
@@ -5,7 +19,7 @@ import './JBstyles.css';
 import { collection, getDocs } from 'firebase/firestore';
 import moment from 'moment';
 import halfLogo from './Images/halfLogo.png';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Router } from 'react-router-dom';
 
 export default function CalendarTimeGC(props) {
   const [GCals, setGCals] = useState([]);
@@ -17,10 +31,18 @@ export default function CalendarTimeGC(props) {
   });
 
   useEffect(() => {
-    getGroups8();
+    getGroups2();
   }, []);
 
-  function getGroups8() {
+
+  /*F+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Function: getGroups2
+Summary: Recieves the group events from firebase
+Args: none
+Returns: groups - an event map 
+Contributor Sam Merlin
+-------------------------------------------------------------------F*/
+  function getGroups2() {
     const groupCollection = collection(oFirestore, 'GCEvents')
     getDocs(groupCollection)
       .then(Response => {
@@ -65,6 +87,7 @@ export default function CalendarTimeGC(props) {
   };
 
  return (
+  
    <div>
      <header>
        <div className="flexbox-container">
@@ -79,7 +102,8 @@ export default function CalendarTimeGC(props) {
                    </svg>
                    &nbsp;
                Personal
-           </button></span></div>
+           </button></span>
+           </div>
          <div className="flexbox-item flexbox-item-3">
            <span><button className="button right" onClick={() => navigate('/GroupCalendar')}>
                <svg width="36" height="40" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,10 +146,13 @@ export default function CalendarTimeGC(props) {
        
        <p className='text-center'>
          <span className='bold'>Selected Date:</span> {date.toDateString()}<br />
-         <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}</div>)}
+         
        </p>
-       
+       <p className='text-center'>
+       <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}</div>)}
+       </p>
      </div>
    </div>
+   
  );
 };

@@ -1,3 +1,17 @@
+/*+===================================================================
+File: addTaskForm.js
+
+Summary: Information about the task form for scheduling an event from the personal or group calendar
+
+Exported Data Structures: user
+
+Exported Functions: TaskDesign() - the function that allows the user to interract and schedule with and will warn if errors
+
+Contributors:
+    Patrick McDonagh 4/30/2023
+
+===================================================================+*/
+
 import React, { useState } from 'react';
 import './login.css';
 import { oFirestore } from './firebase-config';

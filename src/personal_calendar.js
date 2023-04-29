@@ -19,6 +19,9 @@ import { collection, getDocs } from 'firebase/firestore';
 import moment from 'moment';
 import halfLogo from './Images/halfLogo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
+import 'reactjs-popup/dist/index.css';
+import Popup from 'reactjs-popup';
 
 export default function CalendarTimePC(props) {
   const [PCals, setPCals] = useState([]);
@@ -28,6 +31,9 @@ export default function CalendarTimePC(props) {
   const [events, setEvents] = useState([]);
   const [pcalEvents, setPcalEvents] = useState({
   });
+  const [showPopup, setShowPopup] = useState(false);
+
+  const tempId = 0;
 
   useEffect(() => {
     getGroups1();
@@ -74,7 +80,7 @@ Contributor Sam Merlin
     if (view === 'month') {
       const dateStr = date.toISOString().slice(0, 10);
       const eventList = pcalEvents[dateStr] || [];
-      if(eventList.length ==0){
+      if(eventList.length ===0){
         return <p>&nbsp;</p>
       }
       return <p>Events: {eventList.length}</p>;
@@ -89,38 +95,6 @@ Contributor Sam Merlin
     setEvents(eventList);
   };
 
-  // const Popup = ({ text }) => {
-  //   return (
-  //     <div className="popup">
-  //       <p>{text}</p>
-  //     </div>
-  //   );
-  // };
-  
-  // const TextWithPopup = ({ text, popupText }) => {
-  //   const [showPopup, setShowPopup] = useState(false);
-  
-  //   const handleMouseOver = () => {
-  //     setShowPopup(true);
-  //   };
-  
-  //   const handleMouseLeave = () => {
-  //     setShowPopup(false);
-  //   };
-  
-  //   return (
-  //     <div>
-  //       <span
-  //         className="text-with-popup"
-  //         onMouseOver={handleMouseOver}
-  //         onMouseLeave={handleMouseLeave}
-  //       >
-  //         {text}
-  //       </span>
-  //       {showPopup && <Popup text={popupText} />}
-  //     </div>
-  //   );
-  // };
 
  return (
    <div>
@@ -167,10 +141,24 @@ Contributor Sam Merlin
      <Calendar onChange={setDate} calendarType="US" value={date} onClickDay={onClickDay} tileContent={tileContent} />
        
        <p className='text-center'>
-        {/* <div>onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}</div> */}
+    
          <span className='bold'>Selected Date:</span> {date.toDateString()}<br />
-         <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}  </div>)}
+         <span className='bold'>Events:</span> {events.map((event, index) => <p key={index} id={index} className="event__item" onMouseEnter={() => {setShowPopup(true); tempId =  events.map((event, index));   }}
+         >
+            {event}
+          </p>)}
+         
+          <Popup open={showPopup} closeOnDocumentClick onClose={() => setShowPopup(false)}>
+          {events.map((event, index) => 
+          <h2 key={index} id={index} className="event__item" onMouseEnter={() => {setShowPopup(true); tempId =  events.map((event, index));   }}
+         >
+            {event}
+            <p>{event.event_timestamp}</p>
+          </h2>)}
+        
+        <p></p>
+      </Popup>
+         <p> </p>
        </p>
      </div>
    </div>

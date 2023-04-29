@@ -1,3 +1,17 @@
+/*+===================================================================
+File: Home_Screen_Design.test.js
+
+Summary: Testing for the home screen design pages of the personal and group calendars
+
+Exported Data Structures: user
+
+Exported Functions: none
+
+Contributors:
+    Patrick McDonagh 4/30/2023
+
+===================================================================+*/
+
 import {render, screen, fireEvent} from "@testing-library/react";
 import React from "react";
 import Home_Screen from "./Home_Screen_Design"

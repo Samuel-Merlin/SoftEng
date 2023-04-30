@@ -19,6 +19,9 @@ import { collection, getDocs } from 'firebase/firestore';
 import moment from 'moment';
 import halfLogo from './Images/halfLogo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
+import 'reactjs-popup/dist/index.css';
+import Popup from 'reactjs-popup';
 
 export default function CalendarTimePC(props) {
   const [PCals, setPCals] = useState([]);
@@ -28,6 +31,9 @@ export default function CalendarTimePC(props) {
   const [events, setEvents] = useState([]);
   const [pcalEvents, setPcalEvents] = useState({
   });
+  const [showPopup, setShowPopup] = useState(false);
+
+  const tempId = 0;
 
   useEffect(() => {
     getGroups1();
@@ -54,15 +60,19 @@ Contributor Sam Merlin
         console.log(groups)
         setPcalEvents(prevEvents => {
           const newEvents = { ...prevEvents };
-        
+          const eventsArray = [];
           groups.forEach(group => {
-            const dateStr = moment(group.data.event_timestamp.toDate()).format('YYYY-MM-DD');
-            if (!newEvents[dateStr]) {
-              newEvents[dateStr] = [group.data.event_name];
-            } else if (!newEvents[dateStr].includes(group.data.event_name)) {
-              newEvents[dateStr] = [...newEvents[dateStr], group.data.event_name];
-            }
-          });
+    const dateStr = moment(group.data.event_timestamp.toDate()).format('YYYY-MM-DD');
+    const description = group.data.event_description;
+    
+    const eventName = group.data.event_name;
+    if (!newEvents[dateStr]) {
+      newEvents[dateStr] = [eventName,description];
+    } else if (!newEvents[dateStr].includes(eventName)) {
+      newEvents[dateStr] = [...newEvents[dateStr], eventName,description];
+    }
+    eventsArray.push({ description, dateStr, eventName });
+  });
         
           return newEvents;
         });
@@ -70,11 +80,15 @@ Contributor Sam Merlin
       .catch(error => console.log(error.message));
   }
 
+
   const tileContent = ({ date, view }) => {
     if (view === 'month') {
       const dateStr = date.toISOString().slice(0, 10);
       const eventList = pcalEvents[dateStr] || [];
-      return <p>Events: {eventList.length}</p>;
+      if(eventList.length ==0){
+        return <p>&nbsp;</p>
+      }
+      return <p>Events: {eventList.length/2}</p>;
     }
   };
 
@@ -84,6 +98,34 @@ Contributor Sam Merlin
     const eventList = pcalEvents[dateStr] || [];
     setEvents(eventList);
   };
+
+  const getDescription = (value) => {
+    
+    const dateStr = value.toISOString().slice(0, 10);
+    const eventList = pcalEvents[dateStr] || [];
+    const eventDivs = [];
+    for (let i = 0; i < eventList.length; i ++) {
+     if (i%2== 0)
+      eventDivs.push(<div key={i}>Event: {eventList[i]}</div>);
+      else
+      eventDivs.push(<div key={i}>Description: {eventList[i]}</div>);
+    }
+    
+    return <div>{eventDivs}</div>;
+  }
+ 
+  const printEvents = (value) =>{
+    
+    const dateStr = value.toISOString().slice(0, 10);
+    const eventList = pcalEvents[dateStr] || [];
+    
+    const eventDivs = [];
+    console.log(eventList)
+for (let i = 0; i < eventList.length; i += 2) {
+  eventDivs.push(<div key={i}>{eventList[i]}</div>);
+}
+return <div>{eventDivs}</div>;
+  }
 
 
  return (
@@ -130,15 +172,33 @@ Contributor Sam Merlin
      <div>
      <Calendar onChange={setDate} calendarType="US" value={date} onClickDay={onClickDay} tileContent={tileContent} />
        
-       <p className='text-center'>
+     <p className='text-center'>
          <span className='bold'>Selected Date:</span> {date.toDateString()}<br />
-         <span className='bold'>Events:</span> {events.map((event, index) => <div key={index}>{event}</div>)}
+         
+       </p>
+       <p className='text-center'>
+       <span className='bold'>Events:</span>
+      
+          <div  onMouseEnter={() => {setShowPopup(true);}}>
+            {printEvents(date)}
+            
+          </div>
+       
+       <Popup open={showPopup} closeOnDocumentClick onClose={() => setShowPopup(false)}>
+         
+          <h2  className="event__item" onMouseEnter={() => {setShowPopup(true);   }}
+         >
+            {getDescription(date)}
+            {}
+            
+          </h2>
+        
+        <p></p>
+      </Popup>
        </p>
      </div>
    </div>
+   
  );
 };
-
-
-
 

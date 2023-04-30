@@ -1,9 +1,24 @@
+/*+===================================================================
+File: addTaskForm.js
+
+Summary: Information about the task form for scheduling an event from the personal or group calendar
+
+Exported Data Structures: user
+
+Exported Functions: TaskDesign() - the function that allows the user to interract and schedule with and will warn if errors
+
+Contributors:
+    Patrick McDonagh 4/30/2023
+
+===================================================================+*/
+
 import React, { useState } from 'react';
 import './login.css';
 import { oFirestore } from './firebase-config';
 import {collection,getDocs,addDoc} from 'firebase/firestore';
 import moment from 'moment';
 import { NavLink, useNavigate, Link } from 'react-router-dom'
+import halfLogo from './Images/halfLogo.png';
 
 function TaskDesign()
 {
@@ -40,6 +55,7 @@ function TaskDesign()
 }
 return(
 
+  
   
   <div className='body'>
             <div className='Header'> MyCalendarTime.com </div>

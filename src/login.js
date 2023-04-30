@@ -43,7 +43,7 @@ function Login() {
             <div className='Header'> MyCalendarTime.com </div>
               <img className='img' src={CalApp} alt='sd'/>
               <div>
-                <div className="heading-container">
+                <div>
                   <div className='logintxt'>Log-in</div>
                     <div className='container'>
                         <div>
@@ -67,7 +67,9 @@ function Login() {
                         <div>
                             <button className = 'btn' onClick={fnHandleLogin} >Log in</button>
                         </div>
+                        <div className='inHtml'>
                         <p id ='Message'></p>
+                        </div>
                   </div>
               </div>
           </div>

@@ -59,7 +59,13 @@
     text-align: center;
     display: inline;
     font-size: 32px;
-    margin-left: 20%;
+    margin-left: 18%;
+}
+.link2{
+    text-align: center;
+    display: inline;
+    font-size: 32px;
+    margin-left: 10%;
 }
 .bigImg{
     width: 340px;

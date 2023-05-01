@@ -31,7 +31,7 @@ function Home_Screen()
                     <Link to='/PersonalCalendar'>Personal Calendar</Link>
                       </div>
                       
-                    <div className='link'>  
+                    <div className='link2'>  
                       <Link to='/GroupCalendar'>Group Calendar</Link>
                 </div>
               </div>
